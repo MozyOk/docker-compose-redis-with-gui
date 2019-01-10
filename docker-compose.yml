@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+
+  redisCommander:
+    image: tenstartups/redis-commander
+    command: --redis-host redis
+    links:
+      - redis:redis
+    ports:
+      - '8081:8081'
+
+volumes:
+  redis-data:
+    driver: local
